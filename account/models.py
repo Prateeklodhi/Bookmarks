@@ -1,4 +1,4 @@
-from distutils.command.upload import upload
+from djanog.urls import reverse
 from django.db import models
 # Create your models here.
 from django.conf import settings
@@ -9,3 +9,6 @@ class Profile(models.Model):
 
     def __str__(self) -> str:
         return f'Profile of {self.user.username}'
+    
+    def get_absoulte_url(self):
+        return reverse('image:detail',args=[self.id,self.slug])

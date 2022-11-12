@@ -111,14 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-AUTHENTICATION_BACKEND = [
+AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
-   
-]
-
-SOCIAL_AUTH_AUTHENTICATION_BACKENDS = [
     'social_core.backends.facebook.FacebookOAuth2',
+    # 'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.google.GoogleOAuth2',
 ]
 
@@ -133,7 +130,7 @@ SOCIAL_AUTH_PIPELINE = [
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
-] 
+]
 
 
 SOCIAL_AUTH_FACEBOOK_KEY= '1263274184455067' # Facebook app id
@@ -166,3 +163,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type('application/javascript','.js',True)
+    mimetypes.add_type('text/css','.css',True)
