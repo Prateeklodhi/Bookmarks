@@ -21,9 +21,8 @@ def image_created(request):
     else:
         #build form with data provided by the bookmarklet via GET
         form = ImageCreateForm(data=request.GET)
-    return render(request,'images/image/create.html',{'section':'images','form':form 
-    })    
+    return render(request,'images/image/create.html',{'section':'images','form':form})    
 
 def image_detail(request,id,slug):
     image = get_list_or_404(Image,id=id,slug =slug)
-    return render(request,'image/image/details.html','section':'image','image':image)
+    return render(request,'images/image/detail.html',{'section':'images','image':image})

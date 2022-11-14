@@ -1,7 +1,8 @@
-from djanog.urls import reverse
+
 from django.db import models
-# Create your models here.
 from django.conf import settings
+
+
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     date_of_birth = models.DateField(blank = True,null = True)
@@ -10,5 +11,3 @@ class Profile(models.Model):
     def __str__(self) -> str:
         return f'Profile of {self.user.username}'
     
-    def get_absoulte_url(self):
-        return reverse('image:detail',args=[self.id,self.slug])

@@ -4,5 +4,5 @@ from .import views
 app_name = 'images'
 urlpatterns = [
     path('create/',views.image_created,name='create'),
-    path('detail/<int:id>/<slug:slug>/',views.image_details,name=detail),
-]]
+    path('detail/<int:id>/<slug:slug>/',views.image_detail,name='detail'),
+]
