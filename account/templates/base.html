@@ -15,13 +15,14 @@
 <body>
     <div id = "header">
         <span class="logo">Bookmark</span>
+
         {%if request.user.is_authenticated %}
             <ul class="menu">
                 <li {% if section == "dashboard" %} class="selected" {% endif %}>
                     <a href="{% url 'dashboard' %}">My dashboard</a>
                 </li>
                 <li {% if section == "image" %} class="selected" {% endif %}>
-                    <a href="{% url 'image'%}">Image</a>
+                    <a href="">Image</a>
                 </li>
                 <li {% if section == "people" %} class="selected" {% endif %}>
                     <a href="#">People</a>
@@ -51,5 +52,14 @@
         {%block content%}
         {%endblock content%}
     </div>
+    <script src="//cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script>
+        const csrftoken = Cookies.get('csrftoken');
+        document.addEventListener('DOMContentLoaded',(event)=>{
+            //DOM loaded
+            {% block domready %}
+            {% endblock %}
+        })
+    </script>
 </body>
 </html>
