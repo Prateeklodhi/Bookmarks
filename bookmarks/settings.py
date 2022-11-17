@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-di45ss227(2=cq2@53$u2x-$wtskk8ep(7&8monjh7wj)ujq0r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysite.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['mysite.com','localhost','127.0.0.1','192.168.1.12']
 
 
 # Application definition
@@ -74,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'prateeklodhigloitel@gmail.com'
 EMAIL_HOST_PASSWORD = 'zdzgmjfnyduwhdui'

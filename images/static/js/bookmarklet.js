@@ -1,4 +1,4 @@
-const siteUrl = '//127.0.0.1:8000/';
+const siteUrl = '//192.168.1.12:8080/';
 const styleUrl = siteUrl + 'static/css/bookmarklet.css';
 const minWidth = 250;
 const minHeight = 250;
