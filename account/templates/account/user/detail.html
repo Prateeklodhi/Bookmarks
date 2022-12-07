@@ -27,15 +27,16 @@
     </div>
   {% endwith %}
 {% endblock content %}
-
 {% block domready %}
-  var url = '{% url "user_follow" %}';
+  const url = '{% url "user_follow" %}';
   var options = {
     method: 'POST',
     headers: {'X-CSRFToken': csrftoken},
     mode: 'same-origin'
   }
-  document.querySelector('a.follow').addEventListener('click', function(e){
+
+  document.querySelector('a.follow')
+          .addEventListener('click', function(e){
     e.preventDefault();
     var followButton = this;
 
@@ -65,4 +66,4 @@
       }
     })
   });
-{% endblock domready %}
+{% endblock %}

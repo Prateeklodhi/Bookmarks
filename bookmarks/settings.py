@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+from django.urls import reverse_lazy
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,9 +30,9 @@ ALLOWED_HOSTS = ['mysite.com','localhost','127.0.0.1','192.168.1.12']
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
-    'images.apps.ImagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'social_django', 
     'django_extensions',
     'easy_thumbnails',
+    'images.apps.ImagesConfig',
     'actions.apps.ActionsConfig',
 ]
 
@@ -172,8 +173,7 @@ if DEBUG:
     mimetypes.add_type('text/css','.css',True)
 
 
-from django.urls import reverse_lazy
 ABSOLUTE_URL_OVERRIDES ={
-    'auth.user':lambda u: reverse_lazy('user_detail',args = [u.username])
+    'auth.user':lambda u: reverse_lazy('user_detail',args=[u.username])
 }
 

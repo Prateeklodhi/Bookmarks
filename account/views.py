@@ -15,9 +15,7 @@ def user_login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            user = authenticate(request,
-                                username=cd['username'],
-                                password=cd['password'])
+            user = authenticate(request,                         username=cd['username'],                              password=cd['password'])
             if user is not None:
                 if user.is_active:
                     login(request, user)
@@ -37,9 +35,8 @@ def dashboard(request):
     following_ids = request.user.following.values_list('id',flat=True)
     if following_ids:
         #if user is following others, retrive only their actions
-        actions = actions.filter(user_id__in = following_ids)
-    actions = actions.select_related('user','user__profile').prefetch_related('target')[:10]
-    print(actions)
+        actions = actions.filter(user_id__in=following_ids)
+    actions = actions[:10]#.select_related('user','user__profile').prefetch_related('target')
     return render(request,'account/dashboard.html',{'section': 'dashboard','actions':actions})
 
 
