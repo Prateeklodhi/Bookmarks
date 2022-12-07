@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'social_django', 
     'django_extensions',
     'easy_thumbnails',
+    'actions.apps.ActionsConfig',
 ]
 
 MIDDLEWARE = [
@@ -158,7 +159,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR /'static'
-MEDIA_URL = 'media/'
+MEDIA_URL = 'media/'  
 MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -169,3 +170,10 @@ if DEBUG:
     import mimetypes
     mimetypes.add_type('application/javascript','.js',True)
     mimetypes.add_type('text/css','.css',True)
+
+
+from django.urls import reverse_lazy
+ABSOLUTE_URL_OVERRIDES ={
+    'auth.user':lambda u: reverse_lazy('user_detail',args = [u.username])
+}
+
